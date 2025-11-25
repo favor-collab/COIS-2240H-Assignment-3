@@ -1,6 +1,9 @@
 import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 public class RentalSystem {
     // Static instance of the singleton
@@ -133,5 +136,31 @@ public class RentalSystem {
             if (c.getCustomerId() == id)
                 return c;
         return null;
+    }
+    private void saveVehicle(Vehicle vehicle) {
+        try (FileWriter fw = new FileWriter("vehicles.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(vehicle.getLicensePlate() + " " + vehicle.getMake() + " " + vehicle.getModel() + " " + vehicle.getYear() + " " + vehicle.getStatus());
+            bw.newLine();
+        } catch (IOException e) {
+        }
+    }
+
+    private void saveCustomer(Customer customer) {
+        try (FileWriter fw = new FileWriter("customers.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(customer.getCustomerId() + " " + customer.getCustomerName());
+            bw.newLine();
+        } catch (IOException e) {
+        }
+    }
+
+    private void saveRecord(RentalRecord record) {
+        try (FileWriter fw = new FileWriter("rental_records.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(record.getRecordType() + " " + record.getVehicle().getLicensePlate() + " " + record.getCustomer().getCustomerName() + " " + record.getRecordDate() + " " + record.getTotalAmount());
+            bw.newLine();
+        } catch (IOException e) {
+        }
     }
 }
