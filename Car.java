@@ -26,4 +26,7 @@ public class Car extends Vehicle implements Rentable {
         setStatus(VehicleStatus.Available);
         System.out.println("Car " + getLicensePlate() + " has been returned.");
     }
+    public void testFunction() {
+    	System.out.println("Hello World");
+    }
 }
