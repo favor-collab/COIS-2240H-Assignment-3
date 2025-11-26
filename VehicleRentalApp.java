@@ -5,6 +5,7 @@ public class VehicleRentalApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         RentalSystem rentalSystem = new RentalSystem();
+        
 
         while (true) {
         	System.out.println("\n1: Add Vehicle\n" + 
