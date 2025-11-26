@@ -9,7 +9,7 @@ public class RentalSystem {
 
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
-    }
+    } 
 
     public void addCustomer(Customer customer) {
         customers.add(customer);
