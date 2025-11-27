@@ -1,0 +1,219 @@
+No rental records found.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+2
+Enter customer ID: 001
+Enter name: George
+Duplicate customer ID. Customer not added.(this is because I re-ran my program and the customer was already added)
+Duplicate customer ID! Customer not added.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+2
+Enter customer ID: 002
+Enter name: Anne
+Duplicate customer ID. Customer not added. (this is because I re-ran my program and the customer was already added)
+Duplicate customer ID! Customer not added.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+1
+ 1: Car
+ 2: Minibus
+ 3: Pickup Truck
+1
+Enter license plate: AAA111
+Enter make: Toyota
+Enter model: Corolla
+Enter year: 2019
+Enter number of seats: 5
+Car added successfully.
+Duplicate vehicle license plate. Vehicle not added.
+Duplicate license plate! Vehicle not added.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+1
+ 1: Car
+ 2: Minibus
+ 3: Pickup Truck
+2
+Enter license plate: BBB222
+Enter make: Honda
+Enter model: Civic
+Enter year: 2021
+Is accessible? (true/false): false
+Minibus added successfully.
+Vehicle added successfully.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+1
+ 1: Car
+ 2: Minibus
+ 3: Pickup Truck
+3
+Enter license plate: CCC333
+Enter make: Ford
+Enter model: Focus
+Enter year: 2024
+Enter cargo size: 2.5
+Has trailer? (true/false): false
+Pickup Truck added successfully.
+Vehicle added successfully.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+3
+=== Available Vehicles ===
+Car@30dae81
+Minibus@1b2c6ec2
+PickupTruck@4edde6e5
+Enter license plate: AAA111
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 001
+Enter rental amount: 100
+Vehicle rented to George
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+3
+=== Available Vehicles ===
+Minibus@1b2c6ec2
+PickupTruck@4edde6e5
+Enter license plate: CCC333
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 001
+Enter rental amount: 150
+Vehicle rented to George
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+3
+=== Available Vehicles ===
+Minibus@1b2c6ec2
+Enter license plate: BBB222
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 002
+Enter rental amount: 120
+Vehicle rented to Anne
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+3
+=== Available Vehicles ===
+Enter license plate: CCC333
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 002
+Enter rental amount: 150
+Vehicle is not available.
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+4
+=== Rented Vehicles ===
+Car@30dae81
+Minibus@1b2c6ec2
+PickupTruck@4edde6e5
+Enter license plate: CCC333
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 001
+Enter any additional return fees: 0
+Vehicle returned by George
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+3
+=== Available Vehicles ===
+PickupTruck@4edde6e5
+Enter license plate: CCC333
+Registered Customers:
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne
+Enter customer ID: 002
+Enter rental amount: 150
+Vehicle rented to Anne
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+5
+=== Available Vehicles ===
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit
+6
+RENT | Plate: AAA111 | Customer: George | Date: 2025-11-27 | Amount: $100.0
+RENT | Plate: CCC333 | Customer: George | Date: 2025-11-27 | Amount: $150.0
+RENT | Plate: BBB222 | Customer: Anne | Date: 2025-11-27 | Amount: $120.0
+RETURN | Plate: CCC333 | Customer: George | Date: 2025-11-27 | Amount: $0.0
+RENT | Plate: CCC333 | Customer: Anne | Date: 2025-11-27 | Amount: $150.0
+1: Add Vehicle
+2: Add Customer
+3: Rent Vehicle
+4: Return Vehicle
+5: Display Available Vehicles
+6: Show Rental History
+0: Exit

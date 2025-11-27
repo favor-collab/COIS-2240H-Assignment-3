@@ -1,17 +1,12 @@
 public abstract class Vehicle {
-
-    private int id;
     private String licensePlate;
     private String make;
     private String model;
     private int year;
     private VehicleStatus status;
 
-    public enum VehicleStatus { Available, Rented }
+    public enum VehicleStatus { Available, Held, Rented, UnderMaintenance, OutOfService }
 
-    // -------------------------
-    //   REFACTORED CONSTRUCTOR
-    // -------------------------
     public Vehicle(String make, String model, int year) {
         this.make = capitalize(make);
         this.model = capitalize(model);
@@ -19,58 +14,21 @@ public abstract class Vehicle {
         this.status = VehicleStatus.Available;
     }
 
-    // -------------------------------------------------------
-    //   NEW HELPER METHOD (no duplication in constructor now)
-    // -------------------------------------------------------
     private String capitalize(String input) {
-        if (input == null || input.trim().isEmpty()) {
-            return "";
-        }
-        input = input.trim();
-        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+        if (input == null || input.isEmpty()) return null;
+        return input.substring(0,1).toUpperCase() + input.substring(1).toLowerCase();
     }
 
-    // ----------------------------------
-    //   ADD setId() TO FIX YOUR ERROR
-    // ----------------------------------
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setLicensePlate(String plate) { this.licensePlate = plate == null ? null : plate.toUpperCase(); }
+    public void setStatus(VehicleStatus status) { this.status = status; }
 
-    public int getId() {
-        return id;
-    }
+    public String getLicensePlate() { return licensePlate; }
+    public String getMake() { return make; }
+    public String getModel() { return model; }
+    public int getYear() { return year; }
+    public VehicleStatus getStatus() { return status; }
 
-    // ----------------------------------
-    //   Other existing getters/setters
-    // ----------------------------------
-
-    public void setLicensePlate(String plate) {
-        this.licensePlate = plate;
-    }
-
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public void setStatus(VehicleStatus status) {
-        this.status = status;
-    }
-
-    public VehicleStatus getStatus() {
-        return status;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
+    public String getInfo() {
+        return "| " + licensePlate + " | " + make + " | " + model + " | " + year + " | " + status + " |";
     }
 }
-

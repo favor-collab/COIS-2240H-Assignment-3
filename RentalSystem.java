@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException; 
 
 public class RentalSystem {
-
     private static RentalSystem instance;
 
     private List<Vehicle> vehicles;
@@ -180,15 +179,19 @@ public class RentalSystem {
         try (BufferedReader br = new BufferedReader(new FileReader("vehicles.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                int id = Integer.parseInt(parts[0]);
-                String plate = parts[1];
-                String make = parts[2];
-                String model = parts[3];
-                int year = Integer.parseInt(parts[4]);
-                Vehicle.VehicleStatus status = Vehicle.VehicleStatus.valueOf(parts[5]);
 
-                Vehicle vehicle = new Car(make, model, year, 4); // default 4 seats; adjust as needed
+                line = line.replace("|", "").replace("  ", " ").trim();  // FIX 1
+
+                String[] parts = line.split("\\s+");  // FIX 2
+
+                String plate = parts[0];
+                String make = parts[1];
+                String model = parts[2];
+                int year = Integer.parseInt(parts[3]);
+
+                Vehicle.VehicleStatus status = Vehicle.VehicleStatus.valueOf(parts[4].trim());  // FIX 3
+
+                Vehicle vehicle = new Car(make, model, year, 4);
                 vehicle.setLicensePlate(plate);
                 vehicle.setStatus(status);
                 vehicles.add(vehicle);
@@ -197,6 +200,7 @@ public class RentalSystem {
             System.out.println("No vehicles data found.");
         }
     }
+
 
     private void loadCustomers() {
         try (BufferedReader br = new BufferedReader(new FileReader("customers.txt"))) {
@@ -241,6 +245,3 @@ public class RentalSystem {
         }
     }
 }
-
-
-
