@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.time.LocalDate;
 
 public class VehicleRentalTest {
 
@@ -9,7 +10,6 @@ public class VehicleRentalTest {
     @BeforeEach
     public void setUp() {
         rentalSystem = RentalSystem.getInstance();
-        // no clearData(), just rely on unique test data
     }
 
     @Test
@@ -45,5 +45,26 @@ public class VehicleRentalTest {
             Vehicle v = new Car("Chevy", "Malibu", 2022, 5);
             v.setLicensePlate("ZZZ99"); // too short
         });
+    }
+
+    @Test
+    public void testRentAndReturnVehicle() {
+        Vehicle car = new Car("Toyota", "Corolla", 2019, 5);
+        car.setLicensePlate("XYZ123");
+        Customer customer = new Customer(100, "John");
+
+        rentalSystem.addVehicle(car);
+        rentalSystem.addCustomer(customer);
+
+        // Initially available
+        assertEquals(Vehicle.VehicleStatus.Available, car.getStatus());
+
+        // Rent the vehicle
+        rentalSystem.rentVehicle(car, customer, LocalDate.now(), 100.0);
+        assertEquals(Vehicle.VehicleStatus.Rented, car.getStatus());
+
+        // Return the vehicle
+        rentalSystem.returnVehicle(car, customer, LocalDate.now(), 0.0);
+        assertEquals(Vehicle.VehicleStatus.Available, car.getStatus());
     }
 }
