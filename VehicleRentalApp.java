@@ -2,17 +2,12 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class VehicleRentalApp {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         RentalSystem rentalSystem = RentalSystem.getInstance(); // Singleton
+
         while (true) {
-            System.out.println("\n1: Add Vehicle\n" + 
-                               "2: Add Customer\n" + 
-                               "3: Rent Vehicle\n" + 
-                               "4: Return Vehicle\n" + 
-                               "5: Display Available Vehicles\n" + 
-                               "6: Show Rental History\n" + 
-                               "0: Exit\n");
+            System.out.println("\n1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Display Available Vehicles\n6: Show Rental History\n0: Exit\n");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -33,31 +28,39 @@ public class VehicleRentalApp {
                     scanner.nextLine();
 
                     Vehicle vehicle = null;
-                    if (type == 1) {
-                        System.out.print("Enter number of seats: ");
-                        int seats = scanner.nextInt();
-                        vehicle = new Car(make, model, year, seats);
-                        System.out.println("Car added successfully.");
-                    } else if (type == 2) {
-                        System.out.print("Is accessible? (true/false): ");
-                        boolean isAccessible = scanner.nextBoolean();
-                        vehicle = new Minibus(make, model, year, isAccessible);
-                        System.out.println("Minibus added successfully.");
-                    } else if (type == 3) {
-                        System.out.print("Enter cargo size: ");
-                        double cargoSize = scanner.nextDouble();
-                        scanner.nextLine();
-                        System.out.print("Has trailer? (true/false): ");
-                        boolean hasTrailer = scanner.nextBoolean();
-                        vehicle = new PickupTruck(make, model, year, cargoSize, hasTrailer);
-                        System.out.println("Pickup Truck added successfully.");
-                    }
-
-                    if (vehicle != null) {
-                        vehicle.setLicensePlate(plate);
-                        if (!rentalSystem.addVehicle(vehicle)) {
-                            System.out.println("Duplicate license plate! Vehicle not added.");
+                    try {
+                        if (type == 1) {
+                            System.out.print("Enter number of seats: ");
+                            int seats = scanner.nextInt();
+                            scanner.nextLine();
+                            vehicle = new Car(make, model, year, seats);
+                            vehicle.setLicensePlate(plate); // validate plate
+                            System.out.println("Car added successfully.");
+                        } else if (type == 2) {
+                            System.out.print("Is accessible? (true/false): ");
+                            boolean isAccessible = scanner.nextBoolean();
+                            scanner.nextLine();
+                            vehicle = new Minibus(make, model, year, isAccessible);
+                            vehicle.setLicensePlate(plate); // validate plate
+                            System.out.println("Minibus added successfully.");
+                        } else if (type == 3) {
+                            System.out.print("Enter cargo size: ");
+                            double cargoSize = scanner.nextDouble();
+                            scanner.nextLine();
+                            System.out.print("Has trailer? (true/false): ");
+                            boolean hasTrailer = scanner.nextBoolean();
+                            vehicle = new PickupTruck(make, model, year, cargoSize, hasTrailer);
+                            vehicle.setLicensePlate(plate); // validate plate
+                            System.out.println("Pickup Truck added successfully.");
                         }
+
+                        if (vehicle != null) {
+                            if (!rentalSystem.addVehicle(vehicle)) {
+                                System.out.println("Duplicate license plate! Vehicle not added.");
+                            }
+                        }
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
 
@@ -140,3 +143,4 @@ public class VehicleRentalApp {
         }
     }
 }
+
