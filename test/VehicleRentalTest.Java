@@ -6,8 +6,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
 public class VehicleRentalTest {
-
-```
 private RentalSystem rentalSystem;
 
 @BeforeEach
@@ -93,5 +91,4 @@ public void testSingletonRentalSystem() throws Exception {
     RentalSystem anotherInstance = RentalSystem.getInstance();
     assertSame(instance, anotherInstance, "getInstance should always return the same instance");
 }
-
 }
