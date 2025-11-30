@@ -67,7 +67,7 @@ public class RentalSystemGUI extends Application {
 
     static class RentalRecord {
         private Vehicle vehicle;
-        private Customer customer;
+        private Customer customer; 
         private LocalDate rentDate;
         private LocalDate returnDate;
 
