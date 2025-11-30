@@ -207,7 +207,7 @@ public class RentalSystem {
     }
 
 
-    private void loadCustomers() {
+    void loadCustomers() {
         try (BufferedReader br = new BufferedReader(new FileReader("customers.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -250,3 +250,6 @@ public class RentalSystem {
         }
     }
 }
+
+
+
